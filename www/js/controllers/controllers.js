@@ -9,7 +9,7 @@ angular.module('fl.controllers', ['ngCordova', 'fl.utils', 'fl.services', 'ionic
 
 })
 
-.controller('ScheduleController', function($scope, $timeout, $state, $stateParams, SeasonService, LoadingService, $rootScope, $ionicSideMenuDelegate) {
+.controller('ScheduleController', function($scope, $localstorage, $timeout, $state, $stateParams, SeasonService, LoadingService, $rootScope, $ionicSideMenuDelegate) {
 
     // With the new view caching in Ionic, Controllers are only called
     // when they are recreated or on app start, instead of every page change.
@@ -39,9 +39,22 @@ angular.module('fl.controllers', ['ngCordova', 'fl.utils', 'fl.services', 'ionic
 
     });
 
+    var numberOfMatchdays = 3; 
+    var globalData = $localstorage.getObject("globalData")
+    
+    if(globalData) {
+        if (globalData.seasonData) {
+            numberOfMatchdays = globalData.seasonData.numberOfMatchdays;
+        } else if (globalData.numberOfMatchdays) {
+            numberOfMatchdays = globalData.numberOfMatchdays;
+        }
+    }
+
+    console.log('trong data 12', numberOfMatchdays);
+    // console.log('@an data 10', globalData);
 
     var rounds = [];
-    for (var i = 1; i < 39; i++) rounds.push(i);
+    for (var i = 1; i <= numberOfMatchdays; i++) rounds.push(i);
     $scope.rounds = rounds;
 
 
@@ -183,6 +196,7 @@ angular.module('fl.controllers', ['ngCordova', 'fl.utils', 'fl.services', 'ionic
 
 
     $scope.showPlayers = function(team){
+        console.log('@an data 7', team)
         $state.go('tab.players',{id:team.id,name:team.name});
 
     },

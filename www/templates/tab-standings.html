@@ -1,20 +1,20 @@
-<ion-view view-title="AM League 2.0">
+<ion-view view-title="AM League">
   <ion-content lazy-scroll>
-    <div class="row">
-      <div class="col">Team</div>
-      <div class="col">Pts</div>
-      <div class="col">W</div>
-      <div class="col">D</div>
-      <div class="col">L</div>
-      <div class="col">M</div>
-      <div class="col">F</div>
-      <div class="col">A</div>
+    <div class="row rank-team-wrapper">
+      <div class="col rank-teamlogo">Đội</div>
+      <div class="col">ST</div>
+      <div class="col">T</div>
+      <div class="col">H</div>
+      <div class="col">B</div>
+      <div class="col">TG</div>
+      <div class="col">TH</div>
+      <div class="col">Đ</div>
    
 </div>
 
-  <div class="row" ng-repeat="league in leagueTable" ng-click="">
+  <div class="row rank-team-wrapper" ng-repeat="league in leagueTable" ng-click="">
   
-    <div class="col">
+    <div class="col rank-teamlogo">
       <div image-lazy-src="{{league.crestURI}}" image-lazy-background-image="true" image-lazy-loader="ios" image-lazy-distance-from-bottom-to-load="100" class="teamlogo"></div>
 
       {{league.teamName}}

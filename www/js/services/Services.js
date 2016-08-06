@@ -32,6 +32,8 @@ angular.module('fl.services', ['fl.loader','fl.constants','fl.utils'])
       
             BaseService.ajaxCall(URL.eplTeamList,null,'GET','minified',function(data){
               //console.log(data);
+
+              console.log('@an data 6', data)
                     callback(data);
             })
 
@@ -39,7 +41,7 @@ angular.module('fl.services', ['fl.loader','fl.constants','fl.utils'])
 
     getTeamPlayers : function(teamId,callback){
 
-            BaseService.ajaxCall(URL.baseUrl+'teams/'+teamId+'/players',null,'GET',null,function(data){
+            BaseService.ajaxCall(URL.baseUrl+'teams/players/team'+ teamId + '.json',null,'GET',null,function(data){
               //console.log(data);
                     callback(data);
             })
@@ -71,7 +73,19 @@ angular.module('fl.services', ['fl.loader','fl.constants','fl.utils'])
 
             BaseService.ajaxCall(URL.seasons,null,'GET','minified',function(data){
 
+              console.log('@an data 9', data[0])
+
                 if(data){
+
+                  var globalData = $localstorage.getObject("globalData");
+
+                  if(globalData === undefined || globalData === '' || globalData === null) {
+                    globalData = {};
+                  }
+
+                  globalData.numberOfMatchdays = data[0].numberOfMatchdays;
+
+                  $localstorage.setObject("globalData", globalData);
 
                     $(data).each(function(i,list){
 
@@ -96,10 +110,10 @@ angular.module('fl.services', ['fl.loader','fl.constants','fl.utils'])
       var homeTeamId = teamIds.homeTeamId;
 
            var token = $.Deferred();
-          BaseService.ajaxCall(URL.baseUrl+'teams/'+homeTeamId,null,'GET',null,function(data){
+          BaseService.ajaxCall(URL.baseUrl+'teams/'+homeTeamId+'.json',null,'GET',null,function(data){
                       
                 
-                BaseService.ajaxCall(URL.baseUrl+'teams/'+awayTeamId,null,'GET',null,function(awayData){
+                BaseService.ajaxCall(URL.baseUrl+'teams/'+awayTeamId+'.json',null,'GET',null,function(awayData){
 
                       //console.log(data);
                       var teamData = {};
@@ -131,7 +145,7 @@ angular.module('fl.services', ['fl.loader','fl.constants','fl.utils'])
 
             globalData.seasonId =  id;
 
-            this.getSeasonData('PL',function(data){
+            this.getSeasonData('AM',function(data){
 
                     if(data) {
 
@@ -139,11 +153,10 @@ angular.module('fl.services', ['fl.loader','fl.constants','fl.utils'])
                         globalData.seasonData = data;
                         $localstorage.setObject("globalData",globalData); 
 
-                                
-                          var fixtureUrl = URL.seasons+data.id+'/fixtures';
+                          var fixtureUrl = URL.baseUrl+'/fixtures';
                             
                           if(round != 0){
-                              fixtureUrl += '?matchday='+round;
+                              fixtureUrl += '-'+round+'.json';
                           }
 
 
@@ -151,12 +164,12 @@ angular.module('fl.services', ['fl.loader','fl.constants','fl.utils'])
                           console.log(fixtureUrl);
                          BaseService.ajaxCall(fixtureUrl,null,'GET','minified',function(data){
 
-                           
+                           console.log('@an data 3', data, fixtureUrl)
                             var fixtureList = data.fixtures;
 
                                 $(fixtureList).each(function(i,schedule){
 
-                                   
+                                  console.log('@an data 4', schedule)
                                       var awayTeamId = schedule.awayTeamId;
                                       var homeTeamId = schedule.homeTeamId;
 
@@ -270,24 +283,16 @@ angular.module('fl.services', ['fl.loader','fl.constants','fl.utils'])
     showStandings : function(callback){
 
 
-          var leagueData = $localstorage.getObject("globalData"); 
-          var leagueUrl = URL.seasons+leagueData.seasonData.id+'/leagueTable';
+          var leagueData = $localstorage.getObject("globalData");
+          var leagueUrl = URL.baseUrl + 'leaguetable.json';
           console.log(leagueUrl);
 
           BaseService.ajaxCall(leagueUrl,null,'GET',null,function(data){
 
               callback(data);
           })
-                      
-                
-           
-               
+                           
      }    
-
-
-
-
-
 
   };
 });

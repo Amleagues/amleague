@@ -1,12 +1,12 @@
 //constant value declarations
-var baseUrl = 'http://api.football-data.org/v1/';
+var baseUrl = 'https://dl.dropboxusercontent.com/u/9597499/amleague/';
 angular.module('fl.constants',[])  
 
   .constant('URL', {
   	'baseUrl': baseUrl,
-  	'seasons':baseUrl+'soccerseasons/',
-  	'epl':baseUrl+'soccerseasons/398/teams/',
-  	'eplTeamList':baseUrl+'soccerseasons/398/teams/',
+  	'seasons':baseUrl+'soccerseasons.json',
+  	'epl':baseUrl + 'teams',
+  	'eplTeamList':baseUrl+'teams.json',
 
   })
 

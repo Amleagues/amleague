@@ -27,7 +27,7 @@ angular.module('fl.utils', ['fl.constants'])
 
           LoadingService.show();
           $http({
-              headers: minified ? { 'X-Auth-Token': CONFIG.apiKey,'X-Response-Control': 'minified'} : { 'X-Auth-Token': CONFIG.apiKey},
+              // headers: minified ? { 'X-Auth-Token': CONFIG.apiKey,'X-Response-Control': 'minified'} : { 'X-Auth-Token': CONFIG.apiKey},
               url: givenUrl,
               dataType: 'json',
               data: givenData,

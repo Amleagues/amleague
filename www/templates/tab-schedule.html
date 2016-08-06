@@ -1,4 +1,4 @@
-<ion-view view-title="AM League 2.0">
+<ion-view view-title="AM League">
   <ion-content class="padding" lazy-scroll>
 
     <div class="row">
@@ -10,26 +10,26 @@
     <ion-list>
       <ion-item ng-repeat="fixture in fixtures" ng-click="">
       	<div class="row">
-          <div class="col text-center bold">{{fixture.date}} </div>
+          <div class="col text-center cs-bold">{{fixture.date}} </div>
         </div>
           <!--<div>{{fixture.matchday}}</div>-->
            
 
-        <div class="row">
+        <div class="row cs-row">
 
-          <div class="col">
-            <div class="row">
-              <div class="col col-15"><div image-lazy-src="{{fixture.homeTeamLogo}}" image-lazy-background-image="true" image-lazy-loader="ios" image-lazy-distance-from-bottom-to-load="100" class="teamlogo"></div></div>
-              <div class="col col-85"><div class="col text-center bold">{{fixture.homeTeamName}} </div></div>  
+          <div class="col cs-col">
+            <div class="row cs-row">
+              <div class="col cs-col col-15"><div image-lazy-src="{{fixture.homeTeamLogo}}" image-lazy-background-image="true" image-lazy-loader="ios" image-lazy-distance-from-bottom-to-load="100" class="teamlogo"></div></div>
+              <div class="col cs-col col-85"><div class="col text-center bold">{{fixture.homeTeamName}} </div></div>  
             </div>
           </div>
 
-          <div class="col text-center">vs</div>
+          <div class="col cs-col text-center cs-bold">VS</div>
 
           <div class="col">
-            <div class="row">  
-               <div class="col col-15"><div image-lazy-src="{{fixture.awayTeamLogo}}" image-lazy-background-image="true" image-lazy-loader="ios" image-lazy-distance-from-bottom-to-load="100" class="teamlogo"></div></div>
-               <div class="col col-85"> <div class="col text-center bold">{{fixture.awayTeamName}} </div></div>
+            <div class="row cs-row">  
+               <div class="col cs-col col-15"><div image-lazy-src="{{fixture.awayTeamLogo}}" image-lazy-background-image="true" image-lazy-loader="ios" image-lazy-distance-from-bottom-to-load="100" class="teamlogo"></div></div>
+               <div class="col cs-col col-85"> <div class="col text-center bold">{{fixture.awayTeamName}} </div></div>
             </div>
           </div>
           

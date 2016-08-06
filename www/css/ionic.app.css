@@ -9563,6 +9563,12 @@ a.button {
   -webkit-transition: none !important;
   transition: none !important; }
 
+.row {
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap; }
+
 .slide-in-up {
   -webkit-transform: translate3d(0, 100%, 0);
   transform: translate3d(0, 100%, 0); }
