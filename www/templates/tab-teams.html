@@ -1,0 +1,17 @@
+<ion-view view-title="AM League 2.0">
+  <ion-content  lazy-scroll>
+    <ion-item ng-repeat="team in teams" >
+
+			<div class="row row-center" ng-click="showPlayers(team)">
+			  <div class="col-25">
+			    <div image-lazy-src="{{team.crestUrl}}" image-lazy-background-image="true" image-lazy-loader="ios" image-lazy-distance-from-bottom-to-load="100" class="teamlogo"></div>
+			  </div>
+			  
+			  <div class="col-75">
+					{{team.name}} 
+			  </div>
+			</div>
+
+    </ion-item>
+  </ion-content>
+</ion-view>

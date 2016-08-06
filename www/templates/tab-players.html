@@ -1,0 +1,56 @@
+<ion-view view-title="Players of {{teamName}}">
+  <ion-content  lazy-scroll>
+
+    <ion-item ng-repeat="player in players" >
+			<div class="row row-center" ng-click="showPlayers(player.id)">
+			  <div class="col">
+			  
+				  <div class="row">
+						<div class="col">
+							{{player.name}} 
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col">
+							Jersey No: {{player.jerseyNumber}} 
+						</div>
+					</div>
+				
+					<div class="row">
+						<div class="col">
+							Position: {{player.position}} 
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col">
+							Nationality: {{player.nationality}} 
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col">
+							Date of Birth: {{player.dateOfBirth}} 
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col">
+							Market Value: {{player.marketValue}} 
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col">
+							Contract Until: {{player.contractUntil}} 
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+    </ion-item>
+
+  </ion-content>
+</ion-view>

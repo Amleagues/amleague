@@ -1,0 +1,33 @@
+<ion-view view-title="AM League 2.0">
+  <ion-content lazy-scroll>
+    <div class="row">
+      <div class="col">Team</div>
+      <div class="col">Pts</div>
+      <div class="col">W</div>
+      <div class="col">D</div>
+      <div class="col">L</div>
+      <div class="col">M</div>
+      <div class="col">F</div>
+      <div class="col">A</div>
+   
+</div>
+
+  <div class="row" ng-repeat="league in leagueTable" ng-click="">
+  
+    <div class="col">
+      <div image-lazy-src="{{league.crestURI}}" image-lazy-background-image="true" image-lazy-loader="ios" image-lazy-distance-from-bottom-to-load="100" class="teamlogo"></div>
+
+      {{league.teamName}}
+    </div>
+    
+    <div class="col">{{league.points}}</div>
+    <div class="col">{{league.wins}}</div>
+    <div class="col">{{league.draws}}</div>
+    <div class="col">{{league.losses}}</div>
+    <div class="col">{{league.playedGames}}</div>
+    <div class="col">{{league.goals}}</div>
+    <div class="col">{{league.goalsAgainst}}</div>
+   
+  </div>
+  </ion-content>
+</ion-view>

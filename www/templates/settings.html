@@ -1,0 +1,41 @@
+<ion-view view-title="Settings">
+  <ion-content>
+      
+    <div class="list">
+      
+      <!--<div class="item item-divider"> 
+        Settings
+      </div>
+      
+      <ion-toggle ng-repeat="item in settingsList"
+                  ng-model="item.checked" 
+                  ng-checked="item.checked">
+        {{ item.text }}
+      </ion-toggle>
+      -->
+      
+      <div class="item item-divider"> 
+        Notifications
+      </div>
+      
+      <ion-toggle ng-model="pushNotification.checked"
+                  ng-change="pushNotificationChange()">
+        Push Notifications
+      </ion-toggle>
+      
+      <div class="item item-divider item-icon-right" ng-click="selectTeam()"> 
+         <div class="row">
+            <div class="col col-50">
+               Select Team 
+            </div>
+            <div class="col col-50">
+              <span id="fav_club">{{favClub}}</span>
+            </div>
+          </div>
+        <i class="icon ion-ios-arrow-right"></i>
+      </div>
+      
+    </div>
+      
+  </ion-content>
+</ion-view>
