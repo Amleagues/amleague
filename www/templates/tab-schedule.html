@@ -24,7 +24,8 @@
             </div>
           </div>
 
-          <div class="col cs-col text-center cs-bold">VS</div>
+          <div class="col cs-col text-center cs-bold" ng-show="fixture.result.goalsHomeTeam !== null">{{fixture.result.goalsHomeTeam}} : {{fixture.result.goalsAwayTeam}}</div>
+          <div class="col cs-col text-center cs-bold" ng-show="fixture.result.goalsHomeTeam === null">VS</div>
 
           <div class="col">
             <div class="row cs-row">  
