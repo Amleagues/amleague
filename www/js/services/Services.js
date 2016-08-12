@@ -103,6 +103,16 @@ angular.module('fl.services', ['fl.loader','fl.constants','fl.utils'])
 
     },
 
+    getRoundCount: function(callback) {
+        BaseService.ajaxCall(URL.seasons,null,'GET','minified', function(data){
+            if(data && data[0]){
+              console.log('Services.getRoundCount: ', data[0].numberOfMatchdays)
+              callback(data[0].numberOfMatchdays);
+            }
+        })
+        
+    },
+
     loadFixturesAsync : function(teamIds,callback){
 
       //console.log(teamIds);

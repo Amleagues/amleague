@@ -39,25 +39,17 @@ angular.module('fl.controllers', ['ngCordova', 'fl.utils', 'fl.services', 'ionic
 
     });
 
-    var numberOfMatchdays = 3; 
-    var globalData = $localstorage.getObject("globalData")
-    
-    if(globalData) {
-        if (globalData.seasonData) {
-            numberOfMatchdays = globalData.seasonData.numberOfMatchdays;
-        } else if (globalData.numberOfMatchdays) {
-            numberOfMatchdays = globalData.numberOfMatchdays;
-        }
+    if (!$scope.rounds) {
+        SeasonService.getRoundCount(function(roundCount) {
+            console.log('roundCount: ', roundCount);
+
+            var rounds = [];
+            for (var i = 1; i <= roundCount; i++) rounds.push(i);
+                $scope.rounds = rounds;
+
+            LoadingService.hide();
+        });
     }
-
-    console.log('trong data 12', numberOfMatchdays);
-    // console.log('@an data 10', globalData);
-
-    var rounds = [];
-    for (var i = 1; i <= numberOfMatchdays; i++) rounds.push(i);
-    $scope.rounds = rounds;
-
-
 
     if($stateParams.seasonId){
 
